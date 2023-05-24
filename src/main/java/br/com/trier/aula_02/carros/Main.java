@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import br.com.trier.aula_02.imc.Pessoa;
-
 public class Main {
 	static List<Carro> carros = new ArrayList<Carro>();
 
@@ -77,23 +75,6 @@ public class Main {
 	static List<Carro> listaPorCor(List<Carro> carros) {
 		String corInformada = JOptionPane.showInputDialog("Informe a cor desejada\n" + "1 - Vermelho\n" + "2 - Preto\n" + "3 - Branco\n" + "4 - Prata\n" + "5 - Outro");
 		
-		CorCarro corInformada = CorCarro.valueOf();
-		
-		for(Carro carro : carros) {
-			if(!(1 == 2)) {
-				carros.remove(carro);
-			} else if (!(corInformada == 2)) {
-				carros.remove(carro);
-			} else if (!(corInformada == 3)) {
-				carros.remove(carro);
-			} else if (!(corInformada == 4)) {
-				carros.remove(carro);
-			} else if (!(corInformada == 5)) {
-				carros.remove(carro);
-			} else {
-				JOptionPane.showMessageDialog(null, "Cor ínválida");
-			}
-		}
 		return carros;
 	}
 
