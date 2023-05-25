@@ -21,30 +21,27 @@ public class Util {
 		return Integer.parseInt(JOptionPane.showInputDialog(menu));
 	
 	}
-	
-	static void listaJogadores (String nomeTime, List<Time> lista) {
-		boolean achou = false;
-		
-		String timeInformado = JOptionPane.showInputDialog("Informe o Time desejado");
-			for(Time t : lista) {
-				if(t.getNome().equalsIgnoreCase(timeInformado)) {
-					
-					List<Jogador> jogadores = t.getJogadores();
-					System.out.println("Jogadores do time: " + t.getNome());
-					
-					for(Jogador jogador : jogadores) {
-						System.out.println("Nome: " + jogador.getNome() + "\nNúmero da camisa: " + jogador.getNumeroCamisa()
-											+ "\nGols marcados: " + jogador.getGolsMarcados());
-					}
-					
-				}
-					
-		} 
-		if(!achou) {	
-		JOptionPane.showConfirmDialog(null,"Time não encontrado");	
-		}
-				
+	public static void cadastraTime(List<Time> lista) {
+		Time t = new Time();
+		t.cadastraTime();
+		lista.add(t);
 	}
+	public static Time escolheTime(List<Time> lista) {
+		String menu = "Escolha um time\n";
+		int pos = 1;
+		for (Time time : lista) {
+			menu += pos + " - " + time.getNome() + "\n";
+			pos ++;
+		}
+		int op = Integer.parseInt(JOptionPane.showInputDialog(menu));
+		return lista.get(op-1);
+		
+	}
+	
+	public static void listaJogadoresTime(List<Time> lista) {
+		JOptionPane.showMessageDialog(null, escolheTime(lista).listaJogadores()); ;
+	}
+				
 	static void exibeArtilheiro(List<Time> lista) {
 		Jogador artilheiro = null;
 		int maxGols = 0;

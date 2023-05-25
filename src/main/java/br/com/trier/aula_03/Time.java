@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,32 +13,16 @@ import lombok.Setter;
 public class Time {
 	
 	private String nome;
-	private List<Jogador> jogadores;
-	
-	public Time(String nome) {
-		
-		this.nome = nome;
-		this.jogadores = new ArrayList<Jogador>();
-	}
-			
-	public Time() {
-		this.jogadores = new ArrayList<Jogador>();
+	private List<Jogador> jogadores = new ArrayList<Jogador>();	
 
-	}
-	  public void adicionarJogador(Jogador jogador) {
-	        jogadores.add(jogador);
-	}
-
-	protected void cadastraTime() {
-		String nomeTime = JOptionPane.showInputDialog("Nome do time");
-		
-		Time time = new Time(nomeTime);
+	public void cadastraTime() {
+		nome = JOptionPane.showInputDialog("Nome do time");
 		int op = 0;
 		
 		do {
 		Jogador j = new Jogador();
 		j.cadastraJogadores();
-		time.adicionarJogador(j);
+		jogadores.add(j);
 		
 		op = Integer.parseInt(JOptionPane.showInputDialog("Deseja cadastrar mais jogadores?\n 1 - Sim\n 2 - Não"));
 		} while (op == 1);
@@ -66,6 +49,14 @@ public class Time {
     	
     	return artilheiro;
     }
+    
+	public String listaJogadores() {
+		String ret = "Jogadores do time: " + nome+"\n";
+		for (Jogador jogador : jogadores) {
+			ret += jogador;
+		}
+		return ret;
+	}
     
 	@Override
 	public String toString() {

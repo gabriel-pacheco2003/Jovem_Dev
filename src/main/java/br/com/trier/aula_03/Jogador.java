@@ -47,5 +47,9 @@ public class Jogador {
 			
 			return true;
 		}
+		@Override
+		public String toString() {
+			return "Nome: " + nome + " - Número da camisa: " + numeroCamisa + " - Gols marcados: " + golsMarcados;
+		}
 
 }

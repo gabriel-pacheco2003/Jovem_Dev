@@ -19,13 +19,11 @@ public class Main {
 				op = Util.escolheOp();
 				switch (op) {
 				case 1 :
-						Time t = new Time();
-						t.cadastraTime();
-						lista.add(t);
+						Util.cadastraTime(lista);
 						break;
 						
 				case 2 : 
-						Util.listaJogadores(null, lista);
+						Util.listaJogadoresTime(lista);
 						break;
 						
 				case 3 :
