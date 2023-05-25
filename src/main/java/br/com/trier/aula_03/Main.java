@@ -5,9 +5,11 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class Main {
 	
 	public static void main(String[] args) {
@@ -23,14 +25,29 @@ public class Main {
 						break;
 						
 				case 2 : 
-						JOptionPane.showMessageDialog(null, Util.listaJogadores(lista));
+						Util.listaJogadores(null, lista);
 						break;
-
+						
+				case 3 :
+						Util.exibeArtilheiro(lista);
+						break;
+						
+				case 4 :
+						Util.exibeTimeComMaisGols(lista);
+						break;
+						
+				case 5 :
+						break;
+						
 				default:
+					JOptionPane.showMessageDialog(null,"Opção inválida");
 						break;
 				}
 			
 		} while (op != 5);
+	
 	}
 
 }
+	
+

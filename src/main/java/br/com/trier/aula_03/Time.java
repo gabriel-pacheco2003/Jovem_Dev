@@ -6,8 +6,11 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class Time {
 	
 	private String nome;
@@ -23,24 +26,50 @@ public class Time {
 		this.jogadores = new ArrayList<Jogador>();
 
 	}
+	  public void adicionarJogador(Jogador jogador) {
+	        jogadores.add(jogador);
+	}
 
 	protected void cadastraTime() {
-		nome = JOptionPane.showInputDialog("Nome do time");
+		String nomeTime = JOptionPane.showInputDialog("Nome do time");
 		
+		Time time = new Time(nomeTime);
 		int op = 0;
 		
 		do {
 		Jogador j = new Jogador();
 		j.cadastraJogadores();
-		this.jogadores.add(j);
+		time.adicionarJogador(j);
 		
 		op = Integer.parseInt(JOptionPane.showInputDialog("Deseja cadastrar mais jogadores?\n 1 - Sim\n 2 - Não"));
 		} while (op == 1);
 		
+		
 	}
+    public int getTotalGolsMarcados() {
+    	
+    	int totalGols = 0;
+    	for (Jogador jogador : jogadores) {
+			totalGols += jogador.getGolsMarcados();
+		}
+        return totalGols;
+    }
+    public Jogador getArtilheiro() {
+    	Jogador artilheiro = null;
+    	int maxGols = 0;
+    	
+    	for (Jogador jogador : jogadores) {
+			if(jogador.getGolsMarcados() > maxGols)
+				maxGols = jogador.getGolsMarcados();
+				artilheiro = jogador;
+		}
+    	
+    	return artilheiro;
+    }
+    
 	@Override
 	public String toString() {
-		return "Time: " + nome + "\n" + "Jogadores: \n" + jogadores + " ";
+		return "Time: " + getNome() + "\n" + "Jogadores: \n" + getJogadores() + " ";
 	}
 	
 }

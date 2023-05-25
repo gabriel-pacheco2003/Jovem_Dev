@@ -1,10 +1,11 @@
 package br.com.trier.aula_03;
-
 import javax.swing.JOptionPane;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class Jogador {
 
 	private String nome;

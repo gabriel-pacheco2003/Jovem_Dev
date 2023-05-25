@@ -4,9 +4,11 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class Util {
 	
 	static int escolheOp() {
@@ -19,15 +21,68 @@ public class Util {
 		return Integer.parseInt(JOptionPane.showInputDialog(menu));
 	
 	}
-	static String listaJogadores(List<Time> times) {
-		String timeInformado = JOptionPane.showInputDialog("Entre com o time desejado");
-		String ret = "Jogadores do time: \n";
-		for(Time t : times) {
-				if (t.equals(timeInformado)) {
-					ret += t.toString();
+	
+	static void listaJogadores (String nomeTime, List<Time> lista) {
+		boolean achou = false;
+		
+		String timeInformado = JOptionPane.showInputDialog("Informe o Time desejado");
+			for(Time t : lista) {
+				if(t.getNome().equalsIgnoreCase(timeInformado)) {
+					
+					List<Jogador> jogadores = t.getJogadores();
+					System.out.println("Jogadores do time: " + t.getNome());
+					
+					for(Jogador jogador : jogadores) {
+						System.out.println("Nome: " + jogador.getNome() + "\nNúmero da camisa: " + jogador.getNumeroCamisa()
+											+ "\nGols marcados: " + jogador.getGolsMarcados());
+					}
+					
 				}
+					
+		} 
+		if(!achou) {	
+		JOptionPane.showConfirmDialog(null,"Time não encontrado");	
 		}
-		return ret;
+				
 	}
+	static void exibeArtilheiro(List<Time> lista) {
+		Jogador artilheiro = null;
+		int maxGols = 0;
+
+		for (Time time : lista) {
+			List<Jogador> jogadores = time.getJogadores();
+			for (Jogador jogador : jogadores) {
+				if (jogador.getGolsMarcados() > maxGols) {
+					maxGols = jogador.getGolsMarcados();
+					artilheiro = jogador;
+				}
+			}
+		}
+		if (artilheiro != null) {
+			JOptionPane.showMessageDialog(null, "Artilhieiro do campeonato: " + artilheiro.getNome() + ", Com um total de " + artilheiro.getGolsMarcados() + " gols");
+		}else {
+			JOptionPane.showMessageDialog(null, "Não há jogadores cadastrados.");
+		}
+	}
+	static void exibeTimeComMaisGols(List<Time> lista) {
+		Time timeMaisGols = null;
+		int maxGols = 0;
+
+		for (Time time : lista) {
+			int totalGols = time.getTotalGolsMarcados();
+			if (totalGols > maxGols) {
+				maxGols = totalGols;
+				timeMaisGols = time;
+			}
+		}
+
+		if (timeMaisGols != null) {
+			JOptionPane.showMessageDialog(null,
+					"Time com mais gols: " + timeMaisGols + ", Com um total de " + maxGols + " gols");
+		} else {
+			JOptionPane.showMessageDialog(null, "Não há times cadastrados.");
+		}
+	}
+
 	
 }
