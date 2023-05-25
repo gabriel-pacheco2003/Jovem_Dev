@@ -1,4 +1,6 @@
-package br.com.trier.aula_03.time;
+package br.com.trier.aula_03;
+
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -16,6 +18,16 @@ public class Util {
 			+ "5 - Sair\r";
 		return Integer.parseInt(JOptionPane.showInputDialog(menu));
 	
+	}
+	static String listaJogadores(List<Time> times) {
+		String timeInformado = JOptionPane.showInputDialog("Entre com o time desejado");
+		String ret = "Jogadores do time: \n";
+		for(Time t : times) {
+				if (t.equals(timeInformado)) {
+					ret += t.toString();
+				}
+		}
+		return ret;
 	}
 	
 }

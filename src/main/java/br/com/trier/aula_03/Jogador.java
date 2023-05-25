@@ -1,4 +1,4 @@
-package br.com.trier.aula_03.time;
+package br.com.trier.aula_03;
 
 import javax.swing.JOptionPane;
 
@@ -8,10 +8,10 @@ import lombok.Data;
 public class Jogador {
 
 	private String nome;
-	private int numeroCamisa;
-	private int golsMarcados;
+	private Integer numeroCamisa;
+	private Integer golsMarcados;
 
-	public Jogador(String nome, int numeroCamisa, int golsMarcados) {
+	public Jogador(String nome, Integer numeroCamisa, Integer golsMarcados) {
 		
 		this.nome = nome;
 		this.numeroCamisa = numeroCamisa;
