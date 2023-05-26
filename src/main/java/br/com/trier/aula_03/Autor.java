@@ -9,14 +9,12 @@ import lombok.Setter;
 public class Autor {
 	
 	private String nomeCompleto;
-	/* private String sobrenome; */
 	private String sexo;
 	private Integer idade;	
 	
 	public void cadastra() {
 		nomeCompleto = JOptionPane.showInputDialog("Digite o nome completo").toUpperCase();
-		/* sobrenome = JOptionPane.showInputDialog("Digite o sobrenome"); */
-		sexo = JOptionPane.showInputDialog("Digite (M) para Masculino ou (F) para Femenino");
+		sexo = JOptionPane.showInputDialog("Digite (M) para Masculino ou (F) para Feminino");
 		idade = Integer.parseInt(JOptionPane.showInputDialog("Idade do autor"));
 		if(!valida()) {
 			cadastra();
@@ -28,14 +26,12 @@ public class Autor {
 			JOptionPane.showMessageDialog(null, "Nome obrigatório");
 			return false;
 		}
-		/*
-		 * if(sobrenome.trim().equals("")) { JOptionPane.showMessageDialog(null,
-		 * "Sobrenome obrigatório"); return false; }
-		 */
+		
 		if(!(sexo.equalsIgnoreCase("M") || sexo.equalsIgnoreCase("F"))) {
 			JOptionPane.showMessageDialog(null, "Sexo inválido");
 			return false;
 		}
+		
 		if(idade < 1 || idade > 122 ) {
 			JOptionPane.showMessageDialog(null, "Idade inválida");
 			return false;
@@ -48,7 +44,7 @@ public class Autor {
 		if(sexo.equalsIgnoreCase("M")) {
 			return "Masculino";
 		} else if(sexo.equalsIgnoreCase("F")) {
-			return "Femenino";
+			return "Feminino";
 		} 
 		return null;
 	}

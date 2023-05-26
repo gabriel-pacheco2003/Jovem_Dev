@@ -32,19 +32,19 @@ public class MainLivro {
 				break;
 				
 			case 4 :
-				UtilLivro.listaLivrosDoAutor(livros);
+				UtilLivro.listaLivrosDoAutor(livros, autores);
 				break;
 				
 			case 5 :
-				UtilLivro.listaLivrosPorValor(livros);
+				JOptionPane.showMessageDialog(null, UtilLivro.listaLivrosPorValor(livros));
 				break;
 				
 			case 6 :
-				UtilLivro.listaPorIdade(autores);
+				JOptionPane.showMessageDialog(null, UtilLivro.listaPorIdade(autores));
 				break;
 				
 			case 7 :
-				UtilLivro.listaLivrosPorSexo(livros, autores);
+				JOptionPane.showMessageDialog(null, UtilLivro.listaLivrosPorSexo(livros));
 				break;
 				
 			case 8 :
