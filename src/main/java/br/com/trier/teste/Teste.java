@@ -13,7 +13,8 @@ public class Teste {
 		ani.cadastraAnimais();
 		animais.add(ani);
 		
-		JOptionPane.showMessageDialog(null, animais);
+		JOptionPane.showMessageDialog(null, animais
+				);
 	}
 	
 

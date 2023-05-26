@@ -24,23 +24,27 @@ public class MainLivro {
 				break;
 				
 			case 2 :
-				UtilLivro.escolheOpAutor(autores);
+				UtilLivro.cadastraLivros(autores, livros);
 				break;
 				
 			case 3 :
-				
+				UtilLivro.listaLivros(livros);
 				break;
 				
 			case 4 :
+				UtilLivro.listaLivrosDoAutor(livros);
 				break;
 				
 			case 5 :
+				UtilLivro.listaLivrosPorValor(livros);
 				break;
 				
 			case 6 :
+				UtilLivro.listaPorIdade(autores);
 				break;
 				
 			case 7 :
+				UtilLivro.listaLivrosPorSexo(livros, autores);
 				break;
 				
 			case 8 :
