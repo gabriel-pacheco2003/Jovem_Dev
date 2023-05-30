@@ -25,11 +25,18 @@ public class UtilMedicamento {
 			
 			boolean findMedicamento = false;
 			for(Medicamento m : medicamentos) {
-				if(m.getIndicacoes().contains(p.getSintoma())) &&
+				if(m.getIndicacoes().contains(p.getSintoma()) &&
 				 !m.getContraindicacoes().stream().anyMatch(p.getAlergias()::contains)) {
-					 
+					 findMedicamento = true;
 				 }
 			}
+		}
+	}
+	
+	private void listarPrescricoes() {
+		for(Pessoa p : pessoas) {
+			
+			if()
 		}
 	}
 
