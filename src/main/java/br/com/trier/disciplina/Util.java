@@ -31,12 +31,6 @@ public class Util {
 		return a;
 	}
 	
-	public void addDisciplina(Disciplina disciplina,Aluno aluno, NotaDisciplina notasDisciplinas){
-		NotaDisciplina notaDisciplina = new NotaDisciplina(disciplina);
-		this.notasDisciplinas.add(notaDisciplina);
-	}
-	
-	
 	public Aluno findAlunoById(final Integer id) {
 		return alunos.stream().filter(a -> id.equals(a.getId())).findAny().orElse(null);
 	}
@@ -44,7 +38,7 @@ public class Util {
 	public Professor findProfessorById(final Integer id) {
 		return professores.stream().filter(p -> id.equals(p.getId())).findAny().orElse(null);
 	}
-
+	
 	public Disciplina findDisciplinaById(final Integer id) {
 		return disciplinas.stream().filter(d -> id.equals(d.getId())).findAny().orElse(null);
 	}

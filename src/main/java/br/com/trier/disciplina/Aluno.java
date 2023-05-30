@@ -26,6 +26,11 @@ public class Aluno {
 		this.notasDisciplina = new ArrayList<>();
 	}
 	
+	public void addDisciplina(Disciplina disciplina,Aluno aluno, NotaDisciplina notasDisciplinas){
+		NotaDisciplina notaDisciplina = new NotaDisciplina(disciplina);
+		this.notasDisciplina.add(notaDisciplina);
+	}
+	
 	private List<NotaDisciplina> calcularMediaDisciplinas() {
 		for (NotaDisciplina notaDisciplina : getNotasDisciplina()) {
 			double media = (notaDisciplina.getNotas()[0] + notaDisciplina.getNotas()[1] + notaDisciplina.getNotas()[2])

@@ -1,7 +1,5 @@
 package br.com.trier.teste.disciplina;
 
-import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 
 import br.com.trier.disciplina.Util;
@@ -14,7 +12,6 @@ import br.com.trier.disciplina.Aluno;
 public class DisciplinaUtilTest {
 
 	private Util ut = new Util();
-	private Aluno a = new Aluno();
 
 	@BeforeEach
 	void init() {
@@ -38,7 +35,6 @@ public class DisciplinaUtilTest {
 		Disciplina d1 = new Disciplina("Português" , 8.0, p1);
 		Disciplina d2 = new Disciplina("Matemática" , 8.0, p2);
 		Disciplina d3 = new Disciplina("Física" , 8.0, p3);
-		ut.addDisciplina(d1);
 		
 
 	}
