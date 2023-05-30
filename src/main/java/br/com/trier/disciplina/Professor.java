@@ -1,19 +1,20 @@
 package br.com.trier.disciplina;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @Setter
 public class Professor {
 
-	@NonNull
-	private Integer Id;
+	private Integer id;
+
 	@NonNull
 	private String nome;
+
 	@NonNull
 	private EnumFormacao formacao;
 

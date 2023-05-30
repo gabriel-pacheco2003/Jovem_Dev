@@ -2,38 +2,39 @@ package br.com.trier.disciplina;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @Setter
 public class Aluno {
 
+	private Integer id;
+	
+	@NonNull
 	private String nome;
-	private Map<Disciplina, List<Double>> notas;
+	
+	@NonNull
+	private List<NotaDisciplina> notasDisciplina;
 
-	public void adicionarDisciplina(Disciplina disciplina) {
-		notas.put(disciplina, new ArrayList<>());
+	public Aluno(String nome) {
+		this.nome = nome;
+		this.notasDisciplina = new ArrayList<>();
 	}
-
-	public void adicionarNotas(Disciplina disciplina, double nota) {
-		List<Double> listaNotas = notas.get(disciplina);
-		if (listaNotas != null) {
-			listaNotas.add(nota);
+	
+	private List<NotaDisciplina> calcularMediaDisciplinas() {
+		for (NotaDisciplina notaDisciplina : getNotasDisciplina()) {
+			double media = (notaDisciplina.getNotas()[0] + notaDisciplina.getNotas()[1] + notaDisciplina.getNotas()[2])
+					/ 3;
+			notaDisciplina.setMedia(media);
 		}
+
+		return getNotasDisciplina();
 	}
 
-	public double calcularMedia(Disciplina disciplina) {
-		List<Double> listaNotas = notas.get(disciplina);
 
-		double soma = 0;
-		for (double nota : listaNotas)
-			soma += nota;
-
-		return soma / listaNotas.size();
-	}
 }
