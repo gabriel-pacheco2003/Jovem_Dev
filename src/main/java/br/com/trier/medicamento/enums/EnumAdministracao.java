@@ -1,4 +1,4 @@
-package br.com.trier.medicamento;
+package br.com.trier.medicamento.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
