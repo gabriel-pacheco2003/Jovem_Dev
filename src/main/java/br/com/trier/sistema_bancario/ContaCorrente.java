@@ -2,9 +2,11 @@ package br.com.trier.sistema_bancario;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 @AllArgsConstructor
 @Getter
+@Setter
 public class ContaCorrente {
 	
 	private String correntista;
@@ -26,8 +28,8 @@ public class ContaCorrente {
 	
 	public void transferencia(Double valor, ContaCorrente destino) {
 		if(saldo >= valor) {
+			destino.deposito(valor);
 			saldo -= valor;
-			destino.saldo += valor;
 		} else {
 			 throw new IllegalArgumentException("Saldo insuficiente");
 		}

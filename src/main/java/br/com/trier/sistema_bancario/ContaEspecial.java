@@ -1,8 +1,5 @@
 package br.com.trier.sistema_bancario;
 
-import lombok.Getter;
-
-@Getter
 public class ContaEspecial extends ContaCorrente {
 
 	private Double limite;
@@ -16,7 +13,6 @@ public class ContaEspecial extends ContaCorrente {
 	public void saque(Double valor) {
 		if (saldo + limite >= valor) {
 			saldo -= valor;
-
 		} else {
 			throw new IllegalArgumentException("Saldo insuficiente");
 		}
@@ -25,8 +21,8 @@ public class ContaEspecial extends ContaCorrente {
 	@Override
 	public void transferencia(Double valor, ContaCorrente destino) {
 		if(saldo + limite >= valor) {
+			destino.deposito(valor);
 			saldo -= valor;
-			destino.saldo += valor;
 		} else {
 			 throw new IllegalArgumentException("Saldo insuficiente");
 		}
