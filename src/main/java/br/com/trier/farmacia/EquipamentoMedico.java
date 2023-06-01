@@ -1,18 +1,17 @@
 package br.com.trier.farmacia;
 
-public class Perfumaria extends Produto{
+public class EquipamentoMedico extends Produto{
 
-	private static final Double LIMITE_SALDO_DEVEDOR = 300.00;
-	
-	public Perfumaria(String nome, Integer estoque, Double valor) {
+	public EquipamentoMedico(String nome, Integer estoque, Double valor) {
 		super(nome, estoque, valor);
 	}
 	
 	@Override
 	public void venda(Integer qtdRequerida, Cliente cliente) {
-		if(cliente.getSaldoDevedor() <= LIMITE_SALDO_DEVEDOR && getEstoque() <= qtdRequerida) {
+		if(qtdRequerida > 0) {
 			estoque = getEstoque() - qtdRequerida;
 			cliente.setSaldoDevedor(cliente.getSaldoDevedor() + getValor());
 		}
 	}
+	
 }

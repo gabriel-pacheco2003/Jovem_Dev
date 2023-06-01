@@ -17,14 +17,4 @@ public class ContaEspecial extends ContaCorrente {
 			throw new IllegalArgumentException("Saldo insuficiente");
 		}
 	}
-	
-	@Override
-	public void transferencia(Double valor, ContaCorrente destino) {
-		if(saldo + limite >= valor) {
-			destino.deposito(valor);
-			saldo -= valor;
-		} else {
-			 throw new IllegalArgumentException("Saldo insuficiente");
-		}
-	}
 }
