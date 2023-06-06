@@ -10,12 +10,45 @@ select max(qt_vereadores) from cidade ;
 
 select c.nome from cidade c where qt_vereadores = (select max(qt_vereadores) from cidade) ;
 
-select * from candidato c where cargo = 1 order by c.nome; 
+select c.nome, cargo.nome
+from candidato c 
+inner join cargo on cargo.id = c.cargo and cargo.nome = 'Prefeito'
+order by c.nome;
 
-select * from candidato where cargo = 2 order by nome like 'MARIA';
+select c.nome vereador
+from candidato c
+inner join cargo on cargo.id = c.cargo and cargo.nome = 'Vereador'
+where c.nome like '%MARIA %'
+order by c.nome;
 
-select c.nome from candidato c where c.cargo = 2 order by c.nome like 'Y%';
+select c.nome vereador
+from candidato c
+inner join cargo on cargo.id = c.cargo and cargo.nome = 'Vereador'
+where c.nome like 'Y%'
+order by c.nome;
 
-select c.nome from candidato c
-inner join cidade city 
-on city.id = c.cidade where c.cargo = 1 ; 
+select cidade.nome cidade, candidato.nome candidato
+from cidade 
+inner join candidato on candidato.cidade = cidade.id 
+inner join cargo on cargo.id = candidato.cargo and cargo.nome = 'Prefeito'
+order by cidade.nome, candidato.nome;
+
+select c.nome, cid.nome
+from cidade cid 
+inner join candidato c on c.cidade = cid.id and cid.nome = 'TUBARÃO'
+inner join cargo on cargo.id = c.cargo and cargo.nome = 'Prefeito' 
+order by c.nome; 
+
+select c.nome, cid.qt-eleitores
+from cidade cid
+inner join candidato c on cid.nome =(select max(qt_eleitores) from cidade)
+inner join cargo on cargo.id = c.cargo and cargo.nome = 'Prefeito'
+order by c.nome;
+
+select c.cidade , cidade.nome 
+from candidato c
+inner join cidade.nome on c.cidade = cidade.id and cidade.nome = 'TUBARÃO'
+inner join cargo on cargo.id = c.cargo and cargo.nome = 'Vereador'
+inner join 
+
+select count(*) from candidato c where 
