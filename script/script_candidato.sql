@@ -96,8 +96,19 @@ inner join voto on voto.candidato = candidato.id
 group by partido.sigla 
 order by votos desc;
 
-select count(*)
-from 
+select 
+	sum(v.voto) as votos, sum(vi.brancos) as brancos, sum(vi.nulos) as nulos
+from
+	voto v
+inner join candidato c on
+	v.candidato = c.id
+	and c.cargo = 1
+inner join cidade ci on
+	c.cidade = ci.id 
+	and ci.nome = 'TUBARÃO'
+inner join voto_invalido vi on
+	c.cargo = vi.cargo
+	and ci.id = vi.cidade;
 
 select count(*)
 from cidade c
@@ -114,3 +125,24 @@ inner join cargo on cargo.id = c.cargo and cargo.nome = 'Prefeito'
 inner join cidade on cidade.id = c.cidade
 inner join voto on voto.candidato = c.id and voto.voto = (select max(voto) from voto)
 order by cidade.nome;
+
+//teste 22
+select
+	(
+	select
+		ci.qt_eleitores)
+from
+	cidade ci
+where
+	c.nome = 'TUBARÃO') - (
+	select
+		sum (v.voto))
+from
+	voto v
+inner join candidato c on
+	c.id = v.candidato
+inner join cidade ci on
+	ci.id = c.cidade
+	and ci.nome = 'TUBARÃO'
+inner join cargo on
+	cargo.id = c.cargo 
