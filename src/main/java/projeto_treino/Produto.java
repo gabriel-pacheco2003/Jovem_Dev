@@ -16,7 +16,10 @@ public class Produto {
 		return getNome() + " $ " + getPreco();
 	}
 	
+	@Override
 	public String toString() {
 		return "Nome: " + getNome() + "\nPreço: " + getPreco();
 	}
+
+	public Produto() {}
 }
